@@ -30,12 +30,12 @@
       title: "Car",
       properties: {
       custom_attributes: {
-        title: "i have a custo attribute",
+        title: "i have a custom attribute",
           type: "string",
           "options": {
-          "inputAttributes": [
-            {"name": "custom-attribute", "value": 'custom-value'}
-          ]
+          "inputAttributes": {
+            "custom-attribute": 'custom-value'
+          }
         }
       }
     }
@@ -43,10 +43,11 @@
 
   // sceditor quirk. Styles must be specified in the options at creation
   // if you want to be able to focus on the iframes he creates.
-
-  //JSONEditor.plugins.sceditor.style = '//cdn.jsdelivr.net/sceditor/1.4.3/jquery.sceditor.default.min.css';
-  JSONEditor.plugins.sceditor.style = '';
-
+  JSONEditor.defaults.options.sceditor = {
+    //style: '//cdn.jsdelivr.net/sceditor/1.4.3/jquery.sceditor.default.min.css'
+    style: ''
+  };
+  
   var editor = new JSONEditor(container, {
     schema: schema
   });

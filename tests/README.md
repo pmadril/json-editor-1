@@ -10,8 +10,9 @@ docker-compose run --rm node npm install
 docker-compose up -d
 ```
 
-- Webserver URL: http://127.0.0.1:9001/
-- Browser URL: vnc://127.0.0.1:9059/
+- Webserver URL: http://127.0.0.1:9100/
+- Selenium Firefox Browser URL: vnc://127.0.0.1:9059/
+- Selenium Chrome Browser URL: vnc://127.0.0.1:9060/
 
 ```
 docker-compose run --rm codeceptjs bash
@@ -19,6 +20,21 @@ docker-compose run --rm codeceptjs bash
 $ npm run build
 $ codeceptjs run
 ```
+
+Tests whose `Scenario` string contains the tag `@optional` will be ignored by the automated build process.
+
+
+### Development
+
+To watch changes, eg. while development or fixing code you can run
+
+```
+docker-compose run --rm node bash
+
+$ npm start
+```
+
+which effectively runs the Webpack development server in your project
 
 
 ### References

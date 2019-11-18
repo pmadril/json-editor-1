@@ -3,10 +3,15 @@
   "timeout": 10000,
   "output": "./output",
   "helpers": {
-    "WebDriverIO": {
+    "WebDriver": {
       "url": "http://node:9001/tests/pages/",
       "browser": "firefox",
-      "host": "firefox"
+      "restart": false,
+      "host": "firefox",
+      "smartWait": 5000
+    },
+    "customHelpers": {
+      "require": "./../../config/codeceptjs_helpers.js"
     }
   },
   "include": {
@@ -14,5 +19,21 @@
   },
   "bootstrap": false,
   "mocha": {},
-  "name": "codeceptjs"
+  "name": "codeceptjs",
+  "multiple": {
+    "parallel": {
+      "chunks": 2
+    },
+    "basic": {
+      "browsers": [
+        "firefox",
+        {
+          "url": "http://node:9001/tests/pages/",
+          "browser": "chrome",
+          "host": "chrome",
+          "restart": false
+        }
+      ]
+    }
+  }
 }
